@@ -13,7 +13,7 @@ namespace ConsoleUI
             /*
              * Todo: Follow all comments!! 
              * Double click on the region (gray box) to view all comments
-             */
+              */
 
             #region Vehicles
 
@@ -34,21 +34,41 @@ namespace ConsoleUI
 
             // Create a list of Vehicle called vehicles
 
+            var vehicles = new List<Vehicle>();
+
             /*
              * Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
              * 
              * Set the properties values with object initializer syntax
              */
 
+            Car flex = new Car() { hasTrunk = true, Make = "Ford", Model = "Flex", Year = 2015 };
+            Motorcycle harley = new Motorcycle() { hasSideCar = true, Year = 2007, Model = "fast", Make = "Harley" };
+
+            Vehicle fourDoor = new Car() { hasTrunk = true, Make = "chevy", Model = "cobalt", Year = 1999 };
+            Vehicle muscleCar = new Car() { hasTrunk = false, Make = "ford", Model = "mustang", Year = 2021 };
+
+            vehicles.Add(flex);
+            vehicles.Add(harley);
+            vehicles.Add(fourDoor);
+            vehicles.Add(muscleCar);
             /*
              * Add the 4 vehicles to the list
              * Using a foreach loop iterate through the list and display each of the properties
              */
 
+            foreach ( var option in vehicles)
+            {
+                Console.WriteLine($"Make:{option.Make}, Model:{option.Model}, Year:{option.Year}");
+                option.DriveAbstract();
+                option.DriveVirtual();
+                Console.WriteLine("");
+                Console.WriteLine("");
+            }
+
             // Call each of the drive methods for one car and one motorcycle
 
             #endregion            
-            Console.ReadLine();
         }
     }
 }
